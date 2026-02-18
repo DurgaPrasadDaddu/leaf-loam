@@ -18,7 +18,6 @@ const AboutPage = () => {
       <MissionVisionPage/>
       <ProcessSection/>
       <Footer/>
-      
     </div>
   )
 }

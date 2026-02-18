@@ -18,7 +18,10 @@ const Footer = () => {
 
             {/* LEFT SIDE */}
             <div>
-              <h3 className="text-xl sm:text-2xl font-bold mb-6 leading-snug">
+              <h2 className="text-xl sm:text-3xl font-bold mb-4 leading-snug">
+                Leaf-Loam
+              </h2>
+              <h3 className="text-xl sm:text-2xl font-bold mb-4 leading-snug">
                 Safe, Fast & Reliable
                 <br />
                 Landscape Services
@@ -46,10 +49,11 @@ const Footer = () => {
             <div>
               <h4 className="text-lg font-semibold mb-6">Services</h4>
               <ul className="space-y-3 text-white/80 text-sm">
-                <li>Landscape Design</li>
-                <li>Tree & Shrub Care</li>
-                <li>Vertical Gardens</li>
-                <li>Rooftop Gardens</li>
+                <li>LandScaping</li>
+                <li>Urban Kitchen Gardening</li>
+                <li>Balcony / Terrace Makeovers</li>
+                <li>Corporate Plant Rentals</li>
+                <li>Consultation</li>
                 <li>Maintenance</li>
               </ul>
             </div>
@@ -67,7 +71,13 @@ const Footer = () => {
                 {[Linkedin, Facebook, Instagram, Twitter].map((Icon, index) => (
                   <div
                     key={index}
-                    className="bg-[#7C9A6D] p-2 rounded-full hover:bg-[#FFCE1B] hover:text-black transition duration-300 cursor-pointer"
+                    className="p-3 rounded-full  hover:text-black    bg-white/10 backdrop-blur-xl
+                    hover:bg-white/20
+                    transition-all duration-300
+                    overflow-hidden
+                    border border-white/30
+                    whitespace-nowrapduration-300 cursor-pointer"
+                    
                   >
                     <Icon size={18} />
                   </div>
@@ -86,7 +96,7 @@ const Footer = () => {
               All Rights Reserved.
             </p>
             <p className="mt-3 md:mt-0">
-              Built With Care | Powered By Nature
+              Design & Developed by SSD techinfr solutions
             </p>
           </div>
         </div>

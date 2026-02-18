@@ -29,7 +29,7 @@ export default function VillaHero() {
             href="#"
             className="px-5 py-2 rounded-full bg-black/20 backdrop-blur-md text-white text-sm font-medium hover:bg-white/30 transition"
           >
-            VIEW VILLA ↗
+            VIEW MORE PROJECTS↗
           </Link>
         </div>
 

@@ -289,14 +289,15 @@ export default function ServicesSection() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [hovered, setHovered] = useState(null);
   const [isPaused, setIsPaused] = useState(false);
+  const [activeMobile, setActiveMobile] = useState(null);
   const intervalRef = useRef(null);
 
-  // AUTO SLIDE
+  // AUTO SLIDE (Desktop only)
   useEffect(() => {
-    if (!isPaused) {
+    if (!isPaused && window.innerWidth >= 768) {
       intervalRef.current = setInterval(() => {
         setCurrentIndex((prev) =>
-          prev === services.length - 1 ? 0 : prev + 1
+          prev === services.length - 1 ? 0 : prev + 1,
         );
       }, 3000);
     }
@@ -304,7 +305,6 @@ export default function ServicesSection() {
     return () => clearInterval(intervalRef.current);
   }, [isPaused]);
 
-  // Show 4 cards
   const visibleCards = [
     services[currentIndex],
     services[(currentIndex + 1) % services.length],
@@ -313,20 +313,17 @@ export default function ServicesSection() {
   ];
 
   return (
-    <section className="w-full bg-white py-10 px-6 md:px-12 lg:px-20">
-      <div className="max-w-[1400px] mx-auto bg-gray-200 rounded-3xl p-5">
-
+    <section className="w-full bg-white py-16 px-6 md:px-12 lg:px-20">
+      <div className="max-w-[1400px] mx-auto rounded-3xl p-6">
         {/* Heading */}
-        <div className="text-center mb-8">
-          <h2 className="text-4xl md:text-5xl font-extrabold leading-tight">
-            GET TO KNOW <br />
-            OUR SERVICES
+        <div className="text-center mb-12">
+          <h2 className="text-4xl md:text-5xl font-extrabold text-green-900 tracking-tight">
+            GET TO KNOW <br /> OUR SERVICES
           </h2>
         </div>
-
-        {/* Cards */}
+        {/* Tablet + Desktop Layout */}
         <div
-          className="flex gap-6 transition-all duration-500"
+          className="hidden md:flex gap-6 transition-all duration-500"
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => {
             setHovered(null);
@@ -341,30 +338,97 @@ export default function ServicesSection() {
                 key={index}
                 onMouseEnter={() => setHovered(index)}
                 className={`
-                  relative h-[500px] rounded-3xl overflow-hidden
+                  group relative h-[500px] rounded-3xl overflow-hidden
                   transition-all duration-500 ease-in-out
-                  cursor-pointer
+                  cursor-pointer shadow-xl
                   ${isActive ? "flex-[2]" : "flex-1"}
                 `}
               >
-                {/* Background Image */}
+                {/* Image */}
                 <Image
                   src={service.image}
                   alt={service.title}
                   fill
-                  className={`object-cover transition-transform duration-700 ${
-                    isActive ? "scale-105" : "scale-100"
-                  }`}
+                  className="object-cover transition-transform duration-700 group-hover:scale-105"
                 />
 
-                {/* Bottom Gradient Overlay */}
+                {/* TOP GLASS HEADING (Visible Initially) */}
+                <div
+                  className="
+                    absolute top-6 left-6 right-6
+                    z-20
+                    transition-all duration-500
+                    group-hover:opacity-0
+                    group-hover:-translate-y-6
+                  "
+                >
+                  <div
+                    className="
+                    bg-black/10 backdrop-blur-sm
+                    rounded-2xl px-5 py-3
+                    border border-white/20
+                    shadow-lg
+                  "
+                  >
+                    <h3 className="text-xl font-semibold text-white">
+                      {service.title}
+                    </h3>
+                  </div>
+                </div>
+
+                {/* BOTTOM GLASS CONTENT (On Hover) */}
+                <div
+                  className="
+                  absolute bottom-6 left-6 right-6
+                  opacity-0 translate-y-6
+                  group-hover:opacity-100 group-hover:translate-y-0
+                  transition-all duration-500 z-20
+                "
+                >
+                  <div
+                    className="
+                    bg-black/10 backdrop-blur-sm
+                    rounded-2xl p-5
+                    border border-white/20
+                    shadow-xl
+                  "
+                  >
+                    <h3 className="text-lg font-semibold text-white">
+                      {service.title}
+                    </h3>
+
+                    <p className="mt-3 text-sm text-white/90 leading-relaxed">
+                      {service.desc}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+        {/* Mobile Layout */}
+        <div className="md:hidden flex overflow-x-auto snap-x snap-mandatory gap-6 pb-4">
+          {services.map((service, index) => {
+            const isActive = activeMobile === index;
+
+            return (
+              <div
+                key={index}
+                onClick={() => setActiveMobile(isActive ? null : index)}
+                className="min-w-full h-[450px] snap-center relative rounded-3xl overflow-hidden shadow-xl"
+              >
+                <Image
+                  src={service.image}
+                  alt={service.title}
+                  fill
+                  className="object-cover"
+                />
+
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
 
-                {/* Content at Bottom */}
-                <div className="absolute bottom-0 left-0 w-full p-6 text-white z-10">
-                  <h3 className="text-2xl font-semibold">
-                    {service.title}
-                  </h3>
+                <div className="absolute bottom-0 left-0 w-full p-6 text-white">
+                  <h3 className="text-xl font-semibold">{service.title}</h3>
 
                   <p
                     className={`mt-3 text-sm transition-all duration-300 ${
@@ -380,7 +444,6 @@ export default function ServicesSection() {
             );
           })}
         </div>
-
       </div>
     </section>
   );

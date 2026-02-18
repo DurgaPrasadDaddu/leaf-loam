@@ -21,7 +21,7 @@ export default function Hero() {
           alt="Garden Background"
           fill
           priority
-          className="object-center"
+          className="object-center object-fill"
         />
 
         {/* Dark Gradient Overlay */}
@@ -91,14 +91,22 @@ export default function Hero() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="
-                  w-8 h-8 sm:w-9 sm:h-9
+                  w-10 h-10 sm:w-11 sm:h-11
                   flex items-center justify-center
-                  rounded-full border border-gray-300
-                  text-gray-600
-                  transition-all duration-300
-                  hover:border-green-500
-                  hover:text-green-600
-                  hover:bg-green-100
+                  rounded-full
+
+                  bg-black/15
+                  backdrop-blur-md
+                  border border-black/10
+
+                  text-gray-700
+                  transition-all duration-500 ease-out
+
+                  hover:bg-green-600/25
+                  hover:border-green-500/40
+                  hover:text-green-700
+                  hover:shadow-[0_10px_30px_rgba(34,197,94,0.05)]
+                  hover:scale-110
                 "
               >
                 <Icon size={14} className="sm:hidden" />
