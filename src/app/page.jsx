@@ -1,10 +1,27 @@
-import Hero from "@/components/Hero";
-import Image from "next/image";
 
+import Navbar from "@/components/SharedComponents/Navbar";
+import Footer from "@/components/SharedComponents/Footer";
+import HeroSection from "@/components/Home/Hero";
+import AboutSection from "@/components/Home/AboutSection";
+import ServicesSection from "@/components/Home/ServicesSection";
+import Testimonials from "@/components/Home/Testimonials";
+import VillaHero from "@/components/Home/VillaHero";
+import ContactSection from "@/components/Home/ContactSection";
+
+import Image from "next/image";
+// import Others from "@/components/Home/Others";
 export default function Home() {
   return (
     <div>
-      <Hero/>
+      <Navbar/>
+      <HeroSection/>
+      <AboutSection/>
+      <ServicesSection/>
+      <Testimonials/>
+      <ContactSection/>
+      <VillaHero/>
+      <Footer/>
+      {/* <Others/> */}
     </div>
   );
 }
