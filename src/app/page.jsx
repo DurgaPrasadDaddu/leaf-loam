@@ -17,6 +17,7 @@ export default function Home() {
       <HeroSection/>
       <AboutSection/>
       <ServicesSection/>
+      <ProjectsSection/>
       <Testimonials/>
       <ContactSection/>
       <VillaHero/>
