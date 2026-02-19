@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 
 const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -37,6 +38,16 @@ const Navbar = () => {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between py-3 md:py-4">
             {/* Logo */}
+            {/* <Link href="/" className="flex items-center">
+              <Image
+                src="/Images/logo.png"
+                alt="Leaf-Loam Landscaping Services"
+                width={260}
+                height={60}
+                priority
+                className="h-10 sm:h-12 md:h-14 w-auto object-contain"
+              />
+            </Link> */}
             <Link
               href="/"
               className="text-2xl md:text-3xl font-semibold tracking-wide text-white whitespace-nowrap"
@@ -104,10 +115,18 @@ const Navbar = () => {
         <div className="max-w-7xl mx-auto">
           <div className="backdrop-blur-md bg-white/10 rounded-full px-4 sm:px-6 py-3 border border-white/20 shadow-lg">
             <div className="flex items-center justify-between">
+              {/* <Link href="/">
+                <Image
+                  src="/Images/logo.png"
+                  alt="Leaf-Loam"
+                  width={140}
+                  height={50}
+                  className="h-9 sm:h-10 w-auto object-contain"
+                />
+              </Link> */}
               <div className="text-white text-lg sm:text-xl font-bold">
                 Leaf-Loam
               </div>
-
               <button
                 className="text-white"
                 onClick={() => setMobileOpen(!mobileOpen)}

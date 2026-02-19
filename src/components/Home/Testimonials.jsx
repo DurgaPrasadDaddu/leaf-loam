@@ -38,7 +38,7 @@ export default function Testimonials() {
   const [active, setActive] = useState(0);
 
   return (
-    <section className="w-full p-2 sm:p-4 bg-white">
+    <section className="w-full p-8 sm:p-6 bg-white">
         <div className="relative bg-black rounded-3xl overflow-hidden shadow-xl py-14 px-6 md:px-12 lg:px-20">
 
       {/* Background Image Overlay */}

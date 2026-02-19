@@ -1,5 +1,5 @@
 "use client";
-
+import { COMPANY, SOCIAL_LINKS } from "@/lib/constants";
 import Link from "next/link";
 import { Linkedin, Facebook, Instagram, Twitter } from "lucide-react";
 
@@ -49,12 +49,23 @@ const Footer = () => {
             <div>
               <h4 className="text-lg font-semibold mb-6">Services</h4>
               <ul className="space-y-3 text-white/80 text-sm">
-                <li>LandScaping</li>
-                <li>Urban Kitchen Gardening</li>
-                <li>Balcony / Terrace Makeovers</li>
-                <li>Corporate Plant Rentals</li>
-                <li>Consultation</li>
-                <li>Maintenance</li>
+                {[
+                  { name: "LandScaping", slug: "landscaping" },
+                  { name: "Urban Kitchen Gardening", slug: "urban-gardening" },
+                  { name: "Balcony / Terrace Makeovers", slug: "balcony-makeover" },
+                  { name: "Corporate Plant Rentals", slug: "corporate-rentals" },
+                  { name: "Consultation", slug: "consultation" },
+                  { name: "Maintenance", slug: "maintenance" },
+                ].map((service, index) => (
+                  <li key={index}>
+                    <Link
+                      href={`/services?type=${service.slug}`}
+                      className="hover:text-[#FFCE1B] transition"
+                    >
+                      {service.name}
+                    </Link>
+                  </li>
+                ))}
               </ul>
             </div>
 
@@ -62,15 +73,18 @@ const Footer = () => {
             <div>
               <h4 className="text-lg font-semibold mb-6">Contact Us</h4>
               <ul className="space-y-3 text-white/80 text-sm">
-                <li>+91 9642482728</li>
-                <li>leafloam@gmail.com</li>
-                <li>Hyderabad, Telangana</li>
+                <li>{COMPANY.phone}</li>
+                <li>{COMPANY.email}</li>
+                <li>{COMPANY.address}</li>
               </ul>
 
               <div className="flex gap-4 mt-6">
-                {[Linkedin, Facebook, Instagram, Twitter].map((Icon, index) => (
-                  <div
+                {SOCIAL_LINKS.map(({ Icon, href }, index) => (
+                  <a
                     key={index}
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="p-3 rounded-full  hover:text-black    bg-white/10 backdrop-blur-xl
                     hover:bg-white/20
                     transition-all duration-300
@@ -80,7 +94,7 @@ const Footer = () => {
                     
                   >
                     <Icon size={18} />
-                  </div>
+                  </a>
                 ))}
               </div>
             </div>
@@ -95,9 +109,9 @@ const Footer = () => {
               © {new Date().getFullYear()} Leaf & Loam Landscape Services.
               All Rights Reserved.
             </p>
-            <p className="mt-3 md:mt-0">
-              Design & Developed by SSD techinfr solutions
-            </p>
+            <a href="https://www.ssdtechinfrasolutions.in/"  target="_blank" className="mt-3 md:mt-0">
+              Design & Developed by SSD Techinfra solutions
+            </a>
           </div>
         </div>
 

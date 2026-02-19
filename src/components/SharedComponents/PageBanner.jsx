@@ -1,7 +1,6 @@
 "use client";
-
+import { COMPANY, SOCIAL_LINKS } from "@/lib/constants";
 import Image from "next/image";
-import { Linkedin, Facebook, Instagram, Globe } from "lucide-react";
 
 export default function PageBanner({
   title,
@@ -54,7 +53,7 @@ export default function PageBanner({
             mt-4 sm:mt-5
             max-w-full sm:max-w-xl
             text-white/80
-            text-sm sm:text-base lg:text-lg
+            text-sm sm:text-base lg:text-lg mb-2.5
           "
           >
             {description}
@@ -73,12 +72,7 @@ export default function PageBanner({
         "
         >
           <div className="flex items-center gap-3 sm:gap-4">
-            {[
-              { Icon: Linkedin, href: "https://linkedin.com" },
-              { Icon: Facebook, href: "https://facebook.com" },
-              { Icon: Globe, href: "https://yourwebsite.com" },
-              { Icon: Instagram, href: "https://instagram.com" },
-            ].map(({ Icon, href }, index) => (
+            {SOCIAL_LINKS.map(({ Icon, href }, index) => (
               <a
                 key={index}
                 href={href}

@@ -1,7 +1,6 @@
 "use client";
-
+import { COMPANY, SOCIAL_LINKS } from "@/lib/constants";
 import Image from "next/image";
-import { Linkedin, Facebook, Instagram, Globe } from "lucide-react";
 
 export default function Hero() {
   return (
@@ -42,7 +41,8 @@ export default function Hero() {
             text-2xl sm:text-2xl md:text-3xl lg:text-6xl xl:text-[90px]
           "
           >
-            WHERE LIFE <br /> MEETS GREEN
+            {COMPANY.heroTitle.split(" ").slice(0, 2).join(" ")} <br /> 
+            {COMPANY.heroTitle.split(" ").slice(2).join(" ")}
           </h1>
 
           <p
@@ -53,8 +53,7 @@ export default function Hero() {
             text-sm sm:text-base lg:text-lg
           "
           >
-            We craft spaces filled with light, texture, and living beauty —
-            gardens that nurture peace, joy, and connection.
+            {COMPANY.heroDescription}
           </p>
         </div>
 
@@ -79,12 +78,7 @@ export default function Hero() {
               z-20
             "
           >
-            {[
-              { Icon: Linkedin, href: "https://linkedin.com" },
-              { Icon: Facebook, href: "https://facebook.com" },
-              { Icon: Globe, href: "https://yourwebsite.com" },
-              { Icon: Instagram, href: "https://instagram.com" },
-            ].map(({ Icon, href }, index) => (
+            {SOCIAL_LINKS.map(({ Icon, href }, index) => (
               <a
                 key={index}
                 href={href}
